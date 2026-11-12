@@ -1,0 +1,11 @@
+---
+/** Kopfbereich für Unterseiten (kleiner als der Hero). */
+import Section from '@/components/ui/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+interface Props { kicker?: string; title: string; intro?: string }
+const { kicker, title, intro } = Astro.props;
+---
+<Section>
+  <Heading level={1} kicker={kicker} intro={intro}>{title}</Heading>
+  <slot />
+</Section>

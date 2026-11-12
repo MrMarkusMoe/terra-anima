@@ -1,0 +1,33 @@
+---
+/** Einheitlicher Button. Mit href = Link, ohne = <button>. */
+import { url } from '@/lib/url';
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  type?: 'button' | 'submit';
+  class?: string;
+}
+const { href, variant = 'primary', type = 'button', class: className } = Astro.props;
+const classes = ['btn', `btn--${variant}`, className];
+---
+{href
+  ? <a href={url(href)} class:list={classes}><slot /></a>
+  : <button type={type} class:list={classes}><slot /></button>}
+
+<style>
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-pill); border: 1.5px solid transparent;
+    font: 600 var(--text-base)/1.2 var(--font-body); text-decoration: none;
+    cursor: pointer; transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+  .btn--primary { background: var(--color-primary); color: var(--color-primary-contrast); }
+  .btn--primary:hover { background: var(--color-accent); color: var(--color-primary-contrast); }
+  .btn--secondary { border-color: currentColor; color: var(--color-primary); background: transparent; }
+  .btn--secondary:hover { background: var(--color-primary); color: var(--color-primary-contrast); border-color: var(--color-primary); }
+  .btn--ghost { color: inherit; background: transparent; padding-inline: 0; }
+  .btn--ghost:hover { color: var(--color-accent); }
+  :global(.section--primary) .btn--primary { background: var(--color-primary-contrast); color: var(--color-primary); }
+  :global(.section--primary) .btn--secondary { color: var(--color-primary-contrast); }
+</style>

@@ -1,0 +1,30 @@
+---
+/** Vorschau-Karte für ein Retreat. */
+import type { CollectionEntry } from 'astro:content';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import RetreatMeta from './RetreatMeta.astro';
+import { pillarTitle } from '@/data/pillars';
+interface Props { retreat: CollectionEntry<'retreats'> }
+const { retreat } = Astro.props;
+const d = retreat.data;
+---
+<Card as="article" class="retreat-card">
+  {d.focus.length > 0 && (
+    <div class="retreat-card__badges">{d.focus.map((f) => <Badge tone={f}>{pillarTitle(f)}</Badge>)}</div>
+  )}
+  <h3>{d.title}</h3>
+  <p class="retreat-card__summary">{d.summary}</p>
+  <RetreatMeta start={d.start} end={d.end} location={d.location} price={d.price} spots={d.spots} />
+  <div class="retreat-card__action">
+    <Button href={`/retreats/${retreat.id}/`} variant="secondary">Details ansehen</Button>
+  </div>
+</Card>
+
+<style>
+  .retreat-card__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .retreat-card h3 { font-size: var(--text-xl); }
+  .retreat-card__summary { color: var(--color-muted); }
+  .retreat-card__action { margin-top: auto; padding-top: var(--space-2); }
+</style>

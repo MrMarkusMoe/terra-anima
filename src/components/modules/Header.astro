@@ -1,0 +1,65 @@
+---
+/** Kopfzeile mit Logo und Navigation. Auf dem Handy als aufklappbares Menü (ohne JavaScript). */
+import Container from '@/components/ui/Container.astro';
+import CompassMark from './CompassMark.astro';
+import { site, nav } from '@/data/site';
+import { url } from '@/lib/url';
+
+const current = Astro.url.pathname;
+const isActive = (href: string) => {
+  const full = url(href);
+  return href === '/' ? current === full : current.startsWith(full);
+};
+---
+<header class="header">
+  <Container>
+    <div class="header__inner">
+      <a href={url('/')} class="header__brand">
+        <CompassMark size={30} />
+        <span>{site.name}</span>
+      </a>
+      <details class="header__menu">
+        <summary aria-label="Menü öffnen"><span></span><span></span><span></span></summary>
+        <nav aria-label="Hauptnavigation">
+          <ul>
+            {nav.map((item) => (
+              <li><a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </Container>
+</header>
+
+<style>
+  .header { border-bottom: 1px solid var(--color-border); background: var(--color-bg); position: relative; z-index: 10; }
+  .header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 72px; }
+  .header__brand {
+    display: flex; align-items: center; gap: var(--space-3);
+    font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600;
+    color: var(--color-primary); text-decoration: none;
+  }
+  ul { display: flex; gap: var(--space-8); list-style: none; padding: 0; }
+  nav a { color: var(--color-text); text-decoration: none; font-weight: 500; }
+  nav a:hover, nav a[aria-current='page'] { color: var(--color-accent); }
+
+  /* Desktop: Menü immer sichtbar, Burger versteckt */
+  .header__menu summary { display: none; }
+  .header__menu > nav { display: block; }
+
+  @media (max-width: 720px) {
+    .header__menu summary {
+      display: grid; gap: 5px; cursor: pointer; list-style: none; padding: var(--space-2);
+    }
+    .header__menu summary::-webkit-details-marker { display: none; }
+    .header__menu summary span { display: block; width: 24px; height: 2px; background: var(--color-text); }
+    .header__menu:not([open]) > nav { display: none; }
+    .header__menu[open] > nav {
+      position: absolute; left: 0; right: 0; top: 100%;
+      background: var(--color-bg); border-bottom: 1px solid var(--color-border);
+      padding: var(--space-4) var(--gutter);
+    }
+    ul { flex-direction: column; gap: var(--space-4); }
+  }
+</style>

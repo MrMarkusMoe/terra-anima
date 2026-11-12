@@ -1,0 +1,42 @@
+---
+/** Großer Einstiegsbereich oben auf einer Seite. */
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+interface Props {
+  kicker?: string;
+  title: string;
+  text?: string;
+  primary?: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+const { kicker, title, text, primary, secondary } = Astro.props;
+---
+<section class="hero">
+  <Container>
+    <div class="hero__inner">
+      {kicker && <p class="hero__kicker">{kicker}</p>}
+      <h1 class="hero__title">{title}</h1>
+      {text && <p class="hero__text">{text}</p>}
+      {(primary || secondary) && (
+        <div class="hero__actions">
+          {primary && <Button href={primary.href}>{primary.label}</Button>}
+          {secondary && <Button href={secondary.href} variant="secondary">{secondary.label}</Button>}
+        </div>
+      )}
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-24) var(--space-16);
+    background:
+      radial-gradient(ellipse at 85% 0%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 60%),
+      radial-gradient(ellipse at 0% 100%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 55%);
+  }
+  .hero__inner { max-width: 760px; display: grid; gap: var(--space-6); }
+  .hero__kicker { font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); }
+  .hero__title { font-size: var(--text-3xl); }
+  .hero__text { font-size: var(--text-lg); color: var(--color-muted); }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-2); }
+</style>

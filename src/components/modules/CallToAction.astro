@@ -1,0 +1,18 @@
+---
+/** Auffälliger Abschluss-Block mit Handlungsaufforderung. */
+import Section from '@/components/ui/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+import Button from '@/components/ui/Button.astro';
+interface Props { title: string; text?: string; button: { label: string; href: string } }
+const { title, text, button } = Astro.props;
+---
+<Section tone="primary">
+  <div class="cta">
+    <Heading align="center" intro={text}>{title}</Heading>
+    <Button href={button.href}>{button.label}</Button>
+  </div>
+</Section>
+
+<style>
+  .cta { display: grid; justify-items: center; text-align: center; }
+</style>

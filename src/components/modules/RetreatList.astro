@@ -1,0 +1,12 @@
+---
+/** Liste der kommenden Retreats, sortiert nach Datum. limit begrenzt die Anzahl. */
+import Grid from '@/components/ui/Grid.astro';
+import RetreatCard from './RetreatCard.astro';
+import { getUpcomingRetreats } from '@/lib/retreats';
+interface Props { limit?: number }
+const { limit } = Astro.props;
+const retreats = (await getUpcomingRetreats()).slice(0, limit);
+---
+{retreats.length > 0
+  ? <Grid min="320px">{retreats.map((r) => <RetreatCard retreat={r} />)}</Grid>
+  : <p>Aktuell sind keine Termine geplant – trag dich in den Newsletter ein, um als Erste:r davon zu erfahren.</p>}

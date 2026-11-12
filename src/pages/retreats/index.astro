@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/modules/PageHeader.astro';
+import Section from '@/components/ui/Section.astro';
+import RetreatList from '@/components/modules/RetreatList.astro';
+import CallToAction from '@/components/modules/CallToAction.astro';
+---
+<BaseLayout title="Retreats" description="Alle kommenden Terra-Anima-Retreats.">
+  <PageHeader kicker="Termine" title="Retreats" intro="Alle Retreats sind bewusst offline – für echte Begegnung mit dir und anderen." />
+  <Section tone="surface"><RetreatList /></Section>
+  <CallToAction title="Kein passender Termin?" text="Lass mich wissen, was du suchst." button={{ label: 'Anfrage stellen', href: '/kontakt/' }} />
+</BaseLayout>

@@ -1,0 +1,60 @@
+/**
+ * DESIGN-TOKENS – die einzige Quelle für Farben, Schriften, Abstände.
+ * Komponenten verwenden NUR diese Variablen, nie feste Werte.
+ * Farben sind Platzhalter, bis die Terra-Anima-Palette eingetragen ist.
+ */
+:root {
+  /* Farben */
+  --color-bg: #f7f3ec;          /* Sand, hell */
+  --color-surface: #fffdf9;     /* Karten, Flächen */
+  --color-text: #2b2a26;        /* Fließtext */
+  --color-muted: #6b665c;       /* Nebentexte */
+  --color-primary: #3f5a46;     /* Waldgrün */
+  --color-primary-contrast: #ffffff;
+  --color-accent: #b5653f;      /* Terrakotta */
+  --color-border: #e3dccf;
+
+  /* Farben der vier Kompass-Richtungen */
+  --color-psychologie: #4a6a8a;
+  --color-spirit: #8a6aa0;
+  --color-balance: #3f5a46;
+  --color-rhythmus: #b5653f;
+
+  /* Schriften (lokal eingebunden, kein Google-CDN) */
+  --font-heading: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+
+  /* Schriftgrößen (fließend zwischen Handy und Desktop) */
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.3rem);
+  --text-xl: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+  --text-2xl: clamp(1.8rem, 1.4rem + 2vw, 2.6rem);
+  --text-3xl: clamp(2.3rem, 1.6rem + 3.5vw, 3.8rem);
+
+  /* Abstände */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Form */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(43 42 38 / 0.06), 0 2px 8px rgb(43 42 38 / 0.05);
+  --shadow-md: 0 4px 20px rgb(43 42 38 / 0.08);
+
+  /* Layout */
+  --width-content: 1120px;
+  --width-text: 68ch;
+  --gutter: clamp(1rem, 4vw, 2rem);
+
+  --transition: 180ms ease;
+}

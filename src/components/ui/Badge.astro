@@ -1,0 +1,17 @@
+---
+/** Kleines Etikett, z. B. für die Kompass-Richtung eines Retreats. */
+interface Props { tone?: 'neutral' | 'psychologie' | 'spirit' | 'balance' | 'rhythmus' }
+const { tone = 'neutral' } = Astro.props;
+---
+<span class="badge" style={tone !== 'neutral' ? `--badge-color: var(--color-${tone})` : undefined}><slot /></span>
+
+<style>
+  .badge {
+    --badge-color: var(--color-muted);
+    display: inline-block; padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm); font-weight: 600;
+    color: var(--badge-color);
+    background: color-mix(in srgb, var(--badge-color) 12%, transparent);
+  }
+</style>

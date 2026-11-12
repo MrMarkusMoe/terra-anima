@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/modules/Hero.astro';
+import Section from '@/components/ui/Section.astro';
+import Heading from '@/components/ui/Heading.astro';
+import PillarGrid from '@/components/modules/PillarGrid.astro';
+import RetreatList from '@/components/modules/RetreatList.astro';
+import CallToAction from '@/components/modules/CallToAction.astro';
+import Button from '@/components/ui/Button.astro';
+---
+<BaseLayout>
+  <Hero
+    kicker="Demo-Seite · Platzhaltertexte"
+    title="Zurück zu dir – offline, in der Natur, in Gemeinschaft."
+    text="Terra Anima verbindet Yoga, Psychologie und Selbsterfahrung zu Retreats, die nachwirken."
+    primary={{ label: 'Retreats ansehen', href: '/retreats/' }}
+    secondary={{ label: 'Kontakt', href: '/kontakt/' }}
+  />
+
+  <Section tone="surface">
+    <Heading kicker="Der Kompass" intro="Vier Richtungen, die jedes Retreat prägen.">Worauf Terra Anima aufbaut</Heading>
+    <PillarGrid />
+  </Section>
+
+  <Section>
+    <Heading kicker="Termine">Kommende Retreats</Heading>
+    <RetreatList limit={3} />
+    <p style="margin-top: var(--space-8)"><Button href="/retreats/" variant="ghost">Alle Retreats →</Button></p>
+  </Section>
+
+  <CallToAction
+    title="Noch Fragen?"
+    text="Schreib mir – ich antworte persönlich."
+    button={{ label: 'Kontakt aufnehmen', href: '/kontakt/' }}
+  />
+</BaseLayout>

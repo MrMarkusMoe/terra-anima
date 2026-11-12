@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/modules/PageHeader.astro';
+import Button from '@/components/ui/Button.astro';
+---
+<BaseLayout title="Seite nicht gefunden">
+  <PageHeader kicker="404" title="Hier geht's nicht weiter" intro="Diese Seite gibt es nicht (mehr).">
+    <Button href="/">Zur Startseite</Button>
+  </PageHeader>
+</BaseLayout>

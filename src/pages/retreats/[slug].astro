@@ -1,0 +1,43 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/modules/PageHeader.astro';
+import Section from '@/components/ui/Section.astro';
+import Prose from '@/components/ui/Prose.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Card from '@/components/ui/Card.astro';
+import RetreatMeta from '@/components/modules/RetreatMeta.astro';
+import InquiryEmbed from '@/components/modules/InquiryEmbed.astro';
+import { getRetreats } from '@/lib/retreats';
+import { pillarTitle } from '@/data/pillars';
+
+export async function getStaticPaths() {
+  const retreats = await getRetreats();
+  return retreats.map((retreat) => ({ params: { slug: retreat.id }, props: { retreat } }));
+}
+
+const { retreat } = Astro.props;
+const d = retreat.data;
+const { Content } = await render(retreat);
+---
+<BaseLayout title={d.title} description={d.summary}>
+  <PageHeader kicker="Retreat" title={d.title} intro={d.summary}>
+    <div class="badges">{d.focus.map((f) => <Badge tone={f}>{pillarTitle(f)}</Badge>)}</div>
+  </PageHeader>
+  <Section tone="surface">
+    <div class="layout">
+      <Prose><Content /></Prose>
+      <aside class="sidebar">
+        <Card><RetreatMeta start={d.start} end={d.end} location={d.location} price={d.price} spots={d.spots} /></Card>
+        <InquiryEmbed tallyUrl={d.tallyUrl} title={d.title} />
+      </aside>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .layout { display: grid; gap: var(--space-12); grid-template-columns: minmax(0, 1fr) 340px; align-items: start; }
+  .sidebar { display: grid; gap: var(--space-6); position: sticky; top: var(--space-6); }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .sidebar { position: static; } }
+</style>

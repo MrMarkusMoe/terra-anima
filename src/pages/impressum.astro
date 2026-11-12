@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/modules/PageHeader.astro';
+import Section from '@/components/ui/Section.astro';
+import Prose from '@/components/ui/Prose.astro';
+import { site } from '@/data/site';
+---
+<BaseLayout title="Impressum">
+  <PageHeader title="Impressum" />
+  <Section tone="surface" size="text">
+    <Prose>
+      <p><strong>Platzhalter – vor der echten Veröffentlichung ausfüllen</strong> (Offenlegung gemäß § 25 MedienG, Angaben gemäß § 5 ECG).</p>
+      <p>{site.owner}<br />Straße Nr.<br />PLZ Ort, Österreich</p>
+      <p>E-Mail: {site.email}</p>
+      <p>Unternehmensgegenstand: …<br />Gewerbebehörde / Kammer: …</p>
+    </Prose>
+  </Section>
+</BaseLayout>

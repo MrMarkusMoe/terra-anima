@@ -1,0 +1,17 @@
+---
+/** Neutrale Fläche für Inhalte. Basis für Retreat-Karten, Säulen usw. */
+interface Props { as?: 'div' | 'article' | 'li'; class?: string }
+const { as: Tag = 'div', class: className } = Astro.props;
+---
+<Tag class:list={['card', className]}><slot /></Tag>
+
+<style>
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: var(--space-4);
+  }
+</style>

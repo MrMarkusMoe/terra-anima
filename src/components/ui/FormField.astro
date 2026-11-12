@@ -1,0 +1,32 @@
+---
+/** Einheitliches Formularfeld mit Label. type="textarea" für mehrzeilig. */
+interface Props {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel' | 'textarea';
+  required?: boolean;
+  autocomplete?: string;
+}
+const { name, label, type = 'text', required = false, autocomplete } = Astro.props;
+const id = `field-${name}`;
+---
+<div class="field">
+  <label for={id}>{label}{required && <span aria-hidden="true"> *</span>}</label>
+  {type === 'textarea'
+    ? <textarea id={id} name={name} rows="6" required={required}></textarea>
+    : <input id={id} name={name} type={type} required={required} autocomplete={autocomplete} />}
+</div>
+
+<style>
+  .field { display: grid; gap: var(--space-2); }
+  label { font-weight: 600; font-size: var(--text-sm); }
+  input, textarea {
+    font: inherit; color: inherit;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    transition: border-color var(--transition);
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--color-primary); }
+  textarea { resize: vertical; }
+</style>

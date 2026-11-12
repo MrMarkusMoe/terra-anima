@@ -1,0 +1,16 @@
+---
+/** Ein Seitenabschnitt mit einheitlichem Abstand. tone wechselt den Hintergrund. */
+import Container from './Container.astro';
+interface Props { tone?: 'default' | 'surface' | 'primary'; size?: 'content' | 'text'; id?: string }
+const { tone = 'default', size = 'content', id } = Astro.props;
+---
+<section id={id} class:list={['section', `section--${tone}`]}>
+  <Container size={size}><slot /></Container>
+</section>
+
+<style>
+  .section { padding-block: var(--space-16); }
+  .section--surface { background: var(--color-surface); }
+  .section--primary { background: var(--color-primary); color: var(--color-primary-contrast); }
+  .section--primary :global(a) { color: inherit; }
+</style>

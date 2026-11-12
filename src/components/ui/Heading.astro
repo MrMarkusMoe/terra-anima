@@ -1,0 +1,31 @@
+---
+/** Überschrift mit optionaler Kicker-Zeile und Einleitung. */
+interface Props {
+  level?: 1 | 2 | 3;
+  kicker?: string;
+  intro?: string;
+  align?: 'left' | 'center';
+}
+const { level = 2, kicker, intro, align = 'left' } = Astro.props;
+const Tag = `h${level}` as 'h1' | 'h2' | 'h3';
+---
+<header class:list={['heading', `heading--${align}`, `heading--h${level}`]}>
+  {kicker && <p class="heading__kicker">{kicker}</p>}
+  <Tag class="heading__title"><slot /></Tag>
+  {intro && <p class="heading__intro">{intro}</p>}
+</header>
+
+<style>
+  .heading { display: grid; gap: var(--space-3); margin-bottom: var(--space-8); }
+  .heading--center { text-align: center; justify-items: center; }
+  .heading__kicker {
+    font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--color-accent);
+  }
+  .heading--h1 .heading__title { font-size: var(--text-3xl); }
+  .heading--h2 .heading__title { font-size: var(--text-2xl); }
+  .heading--h3 .heading__title { font-size: var(--text-xl); }
+  .heading__intro { font-size: var(--text-lg); color: var(--color-muted); max-width: var(--width-text); }
+  :global(.section--primary) .heading__intro,
+  :global(.section--primary) .heading__kicker { color: inherit; opacity: 0.85; }
+</style>

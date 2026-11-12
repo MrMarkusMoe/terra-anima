@@ -1,0 +1,10 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/modules/PageHeader.astro';
+import Section from '@/components/ui/Section.astro';
+import ContactForm from '@/components/modules/ContactForm.astro';
+---
+<BaseLayout title="Kontakt" description="Schreib mir eine Nachricht.">
+  <PageHeader kicker="Kontakt" title="Schreib mir" intro="Fragen zu einem Retreat, Wünsche oder einfach Hallo – ich freue mich auf deine Nachricht." />
+  <Section tone="surface"><ContactForm /></Section>
+</BaseLayout>

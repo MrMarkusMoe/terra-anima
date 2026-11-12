@@ -1,0 +1,23 @@
+---
+/**
+ * Anfrage-/Anmeldeformular eines Retreats (Tally).
+ * Ohne tallyUrl wird ein Platzhalter mit Link zur Kontaktseite angezeigt.
+ */
+import Card from '@/components/ui/Card.astro';
+import Button from '@/components/ui/Button.astro';
+interface Props { tallyUrl?: string; title: string }
+const { tallyUrl, title } = Astro.props;
+---
+<Card class="inquiry">
+  <h3>Interesse an „{title}“?</h3>
+  {tallyUrl
+    ? <><p>Die Anmeldung läuft über ein Formular von Tally (Server in der EU).</p>
+        <Button href={tallyUrl}>Zum Anmeldeformular</Button></>
+    : <><p>Das Anmeldeformular folgt in Kürze. Bis dahin erreichst du mich über das Kontaktformular.</p>
+        <Button href="/kontakt/">Anfrage stellen</Button></>}
+</Card>
+
+<style>
+  .inquiry h3 { font-size: var(--text-lg); }
+  .inquiry :global(.btn) { align-self: start; }
+</style>

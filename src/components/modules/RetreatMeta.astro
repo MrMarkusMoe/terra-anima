@@ -1,0 +1,19 @@
+---
+/** Eckdaten eines Retreats (Datum, Ort, Preis, Plätze). Genutzt in Karte und Detailseite. */
+import { formatDateRange } from '@/lib/url';
+interface Props { start: Date; end: Date; location: string; price: string; spots: number }
+const { start, end, location, price, spots } = Astro.props;
+---
+<dl class="meta">
+  <div><dt>Datum</dt><dd>{formatDateRange(start, end)}</dd></div>
+  <div><dt>Ort</dt><dd>{location}</dd></div>
+  <div><dt>Preis</dt><dd>{price}</dd></div>
+  <div><dt>Plätze</dt><dd>max. {spots}</dd></div>
+</dl>
+
+<style>
+  .meta { display: grid; gap: var(--space-2); font-size: var(--text-sm); }
+  .meta div { display: grid; grid-template-columns: 5.5rem 1fr; gap: var(--space-3); }
+  dt { color: var(--color-muted); }
+  dd { margin: 0; font-weight: 500; }
+</style>

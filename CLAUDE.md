@@ -34,16 +34,13 @@ Statische Website für Markus Mörths Retreats (Yoga, Psychologie, Selbsterfahru
 
 ## Stand (12.11.2026)
 - Grundgerüst + Demo-Seite fertig, Build lokal getestet (Desktop + Mobil), alle Texte Platzhalter
-- GitHub-Konto: **MrMarkusMoe**; leeres öffentliches Repo: **github.com/MrMarkusMoe/terra-anima**
-- Noch NICHT hochgeladen, Pages noch nicht aktiviert
+- GitHub-Konto: **MrMarkusMoe**; öffentliches Repo: **github.com/MrMarkusMoe/terra-anima** (Branch `main`)
+- Live auf GitHub Pages (Source: GitHub Actions): https://mrmarkusmoe.github.io/terra-anima/ – jeder Push auf `main` deployt automatisch
+- Lokal installiert: Git, GitHub CLI (`gh`, angemeldet). Node.js ist auf dem PC NICHT installiert (für lokales `npm run dev` nötig)
 
 ## Nächste Schritte
-1. Im Ordner: `git init`, `git add .`, `git commit -m "Grundgerüst"`, `git branch -M main`,
-   `git remote add origin https://github.com/MrMarkusMoe/terra-anima.git`, `git push -u origin main`
-   (Anmeldung bei GitHub macht Markus selbst, z. B. über `gh auth login` oder den Git Credential Manager)
-2. GitHub → Settings → Pages → Source: **GitHub Actions**
-3. Prüfen, ob die Action durchläuft; Seite: https://mrmarkusmoe.github.io/terra-anima/
-4. Danach: Inhalte (Markenfarben, Logo, Brand Pillars, Texte aus dem früheren 5-Seiten-Mockup)
+1. Inhalte: Markenfarben, Logo, Brand Pillars, Texte aus dem früheren 5-Seiten-Mockup
+2. Workflow-Actions auf Node-24-fähige Versionen heben (GitHub warnt: Node 20 deprecated)
 
 ## Offen
 - Sprachen (nur DE oder DE/EN?)

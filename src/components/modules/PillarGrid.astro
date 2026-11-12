@@ -2,12 +2,13 @@
 /** Die vier Kompass-Richtungen von Terra Anima als Karten. */
 import Grid from '@/components/ui/Grid.astro';
 import Card from '@/components/ui/Card.astro';
+import Mark from '@/components/ui/Mark.astro';
 import { pillars } from '@/data/pillars';
 ---
 <Grid min="230px" as="ul">
   {pillars.map((p) => (
     <Card as="li" class="pillar">
-      <span class="pillar__mark" style={`--pillar-color: var(--color-${p.id})`}>{p.symbol}</span>
+      <Mark tone={p.id}>{p.symbol}</Mark>
       <h3>{p.title}</h3>
       <p>{p.text}</p>
     </Card>
@@ -15,13 +16,6 @@ import { pillars } from '@/data/pillars';
 </Grid>
 
 <style>
-  .pillar__mark {
-    width: 44px; height: 44px; border-radius: 50%;
-    display: grid; place-items: center;
-    font-family: var(--font-heading); font-size: var(--text-lg);
-    color: var(--pillar-color);
-    background: color-mix(in srgb, var(--pillar-color) 14%, transparent);
-  }
   .pillar h3 { font-size: var(--text-lg); }
   .pillar p { color: var(--color-muted); }
 </style>

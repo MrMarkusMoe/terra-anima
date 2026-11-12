@@ -1,0 +1,17 @@
+---
+/** Rundes Symbol (Buchstabe, Zahl) in einer Token-Farbe, z. B. Kompass-Richtung oder Rang. */
+interface Props { tone?: string }
+const { tone = 'accent' } = Astro.props;
+---
+<span class="mark" style={`--mark-color: var(--color-${tone})`}><slot /></span>
+
+<style>
+  .mark {
+    width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1));
+    flex-shrink: 0; border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--font-heading); font-size: var(--text-lg);
+    color: var(--mark-color);
+    background: color-mix(in srgb, var(--mark-color) 14%, transparent);
+  }
+</style>

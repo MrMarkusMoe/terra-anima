@@ -1,6 +1,6 @@
 ---
 /** Responsives Raster. min = Mindestbreite einer Spalte. */
-interface Props { min?: string; as?: 'div' | 'ul' }
+interface Props { min?: string; as?: 'div' | 'ul' | 'ol' }
 const { min = '260px', as: Tag = 'div' } = Astro.props;
 ---
 <Tag class="grid" style={`--grid-min: ${min}`}><slot /></Tag>

@@ -26,5 +26,5 @@ export const legalNav = [
 
 export const forms = {
   /** Web3Forms Access Key (kostenlos auf web3forms.com). Leer = Demo-Modus. */
-  web3formsKey: '',
+  web3formsKey: '823fc78b-eb4b-4ed6-959b-f7e136d7e6fe',
 };

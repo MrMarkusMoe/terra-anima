@@ -36,7 +36,7 @@ Statische Website für Markus Mörths Retreats (Yoga, Psychologie, Selbsterfahru
 - Grundgerüst + Demo-Seite fertig, Build lokal getestet (Desktop + Mobil), alle Texte Platzhalter
 - GitHub-Konto: **MrMarkusMoe**; öffentliches Repo: **github.com/MrMarkusMoe/terra-anima** (Branch `main`)
 - Live auf GitHub Pages (Source: GitHub Actions): https://mrmarkusmoe.github.io/terra-anima/ – jeder Push auf `main` deployt automatisch
-- Lokal installiert: Git, GitHub CLI (`gh`, angemeldet). Node.js ist auf dem PC NICHT installiert (für lokales `npm run dev` nötig)
+- Lokal installiert: Git, GitHub CLI (`gh`, angemeldet), Node.js 26 LTS; `npm ci` + `npm run build` lokal erfolgreich (8 Seiten)
 
 ## Nächste Schritte
 1. Inhalte: Markenfarben, Logo, Brand Pillars, Texte aus dem früheren 5-Seiten-Mockup
